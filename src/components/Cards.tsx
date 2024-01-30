@@ -22,7 +22,10 @@ export default function Cards() {
   });
 
   useEffect(() => {
-    const updateImage = (category, interval) => {
+    const updateImage = (
+      category: keyof typeof imageSets,
+      interval: number,
+    ) => {
       return setInterval(() => {
         setImageSrcs((prevSrcs) => {
           const currentIndex = imageSets[category].indexOf(prevSrcs[category]);
@@ -31,13 +34,11 @@ export default function Cards() {
         });
       }, interval);
     };
-
     const intervals = {
       dorost: updateImage("dorost", 4000),
       vikendovka: updateImage("vikendovka", 13000),
       dalsi: updateImage("dalsi", 20000),
     };
-
     return () => {
       Object.values(intervals).forEach(clearInterval);
     };
@@ -58,8 +59,10 @@ export default function Cards() {
           width="200"
         />
         <CardContent className="p-4">
-          <CardTitle className="text-xl font-bold">Víkendovky</CardTitle>
-          <CardDescription className="text-gray-600">
+          <CardTitle className="text-xl font-bold dark:text-black">
+            Víkendovky
+          </CardTitle>
+          <CardDescription className="text-gray-600 dark:text-black">
             Dobrodružství plné her!
             <br />A ještě k v krásné přírodě.
           </CardDescription>
@@ -78,8 +81,10 @@ export default function Cards() {
           width="200"
         />
         <CardContent className="p-4">
-          <CardTitle className="text-xl font-bold">Dorostový klub</CardTitle>
-          <CardDescription className="text-gray-600">
+          <CardTitle className="text-xl font-bold dark:text-black">
+            Dorostový klub
+          </CardTitle>
+          <CardDescription className="text-gray-600 dark:text-black">
             Pro všechny holky a kluky od 10 let!
             <br /> Každou středu od 19:00.
           </CardDescription>
@@ -98,8 +103,10 @@ export default function Cards() {
           width="200"
         />
         <CardContent className="p-4">
-          <CardTitle className="text-xl font-bold">A další</CardTitle>
-          <CardDescription className="text-gray-600">
+          <CardTitle className="text-xl font-bold dark:text-black">
+            A další
+          </CardTitle>
+          <CardDescription className="text-gray-600 dark:text-black">
             S naším sborem v Medlánkách děláme všechny možné akce, pro rodiny,
             děti, dospělé. Např. kluby maminek, anglické večery, atd.
           </CardDescription>

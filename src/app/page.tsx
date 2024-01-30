@@ -2,31 +2,34 @@
 
 import Link from "next/link";
 import Cards from "../components/Cards";
+import ModeToggle from "../components/ModeToggle";
+import Countdown from "../components/Countdown";
 
 export default async function Page() {
   return (
     <>
       <div className="flex flex-col min-h-screen bg-gradient-to-r from-orange-400 via-red-500 to-sky-500 dark:from-black dark:to-sky-900">
-        <header className="flex items-center justify-between px-8 py-4">
+        <header className="flex items-center justify-between px-8 py-4 border-b">
           <Link className="text-2xl font-bold text-white" href="/">
             K12 Tábor
           </Link>
           <nav className="flex gap-4">
             <Link
-              className="text-lg text-white hover:underline md:pr-4"
+              className="text-lg text-white hover:underline md:pr-4 pt-2"
               href="#contact"
             >
               Kontakt
             </Link>
             <Link
-              className="text-lg text-white hover:underline"
+              className="text-lg text-white hover:underline pt-2"
               href="https://www.k12medlanky.cz/"
             >
               Náš sbor
             </Link>
+            <ModeToggle />
           </nav>
         </header>
-        <main className="flex-1">
+        <main className="flex-1 pt-8">
           <section className="flex flex-col items-center justify-center text-center p-8 space-y-4">
             <h1 className="text-5xl font-bold text-white">
               Příměstský tábor K12
@@ -44,9 +47,9 @@ export default async function Page() {
               Co vše děláme
             </h2>
             <Cards />
-            <div className="pt-16">
-              <div className="bg-white rounded-md max-w-[970px]">
-                <p className="py-1 px-2 text-xl font-semibold">
+            <div className="pt-24">
+              <div className="bg-white rounded-md max-w-[970px]" id="signUp">
+                <p className="py-1 px-2 text-xl font-semibold dark:text-black">
                   Neztrácej čas a radši pojď na tábor kde se bude cestovat
                   časem!
                   <br />
@@ -55,11 +58,13 @@ export default async function Page() {
                 </p>
               </div>
             </div>
+            <br />
+            <Countdown />
           </section>
         </main>
         <footer
           id="contact"
-          className="flex items-center justify-center py-4 text-white text-[10px] md:text-md"
+          className="flex items-center justify-center py-4 text-white text-[10px] md:text-[15px] border-t"
         >
           <span className="pr-4 md:pr-20">
             © 2024 Příměstský tábor, Kytnerova12, Brno Medlánky
