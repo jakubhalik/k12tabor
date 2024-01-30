@@ -1,11 +1,33 @@
-"use server";
-
 import Link from "next/link";
 import Cards from "../components/Cards";
 import ModeToggle from "../components/ModeToggle";
 import Countdown from "../components/Countdown";
+import fs from "fs";
+import path from "path";
 
 export default async function Page() {
+  async function handleEmailSubmission(formData: FormData) {
+    "use server";
+    console.log("Form submitted");
+    try {
+      const filePath = path.join(process.cwd(), "db.txt");
+      let emailList = [];
+      const email = formData.get("email");
+      console.log("Email: ", email);
+      if (typeof email === "string" && email) {
+        if (fs.existsSync(filePath)) {
+          const data = fs.readFileSync(filePath, "utf-8");
+          emailList = JSON.parse(data);
+        }
+        emailList.push(email);
+        fs.writeFileSync(filePath, JSON.stringify(emailList));
+        console.log("Email List Updated: ", emailList);
+      }
+    } catch (error) {
+      console.error("Error in handleEmailSubmission: ", error);
+    }
+  }
+
   return (
     <>
       <div className="flex flex-col min-h-screen bg-gradient-to-r from-orange-400 via-red-500 to-sky-500 dark:from-black dark:to-sky-900">
@@ -60,10 +82,14 @@ export default async function Page() {
             </div>
             <br />
             <Countdown />
-            <form className="flex flex-col md:flex-row gap-4 max-w-lg mx-auto py-16">
+            <form
+              action={handleEmailSubmission}
+              className="flex flex-col md:flex-row gap-4 max-w-lg mx-auto py-16"
+            >
               <input
                 className="flex-1 px-4 py-2 text-lg text-gray-900 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600"
                 placeholder="Přihlaš se k novinkám o táboru"
+                name="email"
                 type="email"
               />
               <button
