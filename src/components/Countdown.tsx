@@ -36,7 +36,7 @@ export default function Countdown() {
   });
 
   return (
-    <div className="flex flex-col lg:flex-row justify-center items-center pt-8 lg:pl-[650px]">
+    <div className="flex flex-col lg:flex-row justify-center items-center pt-8">
       <h2 className="font-bold text-3xl text-center text-white mb-4 lg:mb-0 lg:text-left lg:text-3xl flex items-center lg:pr-4">
         Registrace se spustí za:
       </h2>

@@ -48,7 +48,7 @@ export default async function Page() {
             </h2>
             <Cards />
             <div className="pt-24">
-              <div className="bg-white rounded-md max-w-[970px]" id="signUp">
+              <div className="bg-white rounded-md" id="signUp">
                 <p className="py-1 px-2 text-xl font-semibold dark:text-black">
                   Neztrácej čas a radši pojď na tábor kde se bude cestovat
                   časem!
@@ -60,6 +60,19 @@ export default async function Page() {
             </div>
             <br />
             <Countdown />
+            <form className="flex flex-col md:flex-row gap-4 max-w-lg mx-auto py-16">
+              <input
+                className="flex-1 px-4 py-2 text-lg text-gray-900 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600"
+                placeholder="Přihlaš se k novinkám o táboru"
+                type="email"
+              />
+              <button
+                className="inline-flex items-center justify-center px-6 py-3 text-lg font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700"
+                type="submit"
+              >
+                Poslat @adresu
+              </button>
+            </form>
           </section>
         </main>
         <footer
