@@ -23,19 +23,19 @@ export default async function Page() {
   return (
     <>
       <div className="flex flex-col min-h-screen bg-gradient-to-r from-orange-400 via-red-500 to-sky-500 dark:from-black dark:to-sky-900">
-        <header className="flex items-center justify-between px-8 py-4 border-b">
-          <Link className="text-2xl font-bold text-white" href="/">
+        <header className="flex items-center justify-between px-2 sm:px-8 py-4 border-b">
+          <Link className="text-md sm:text-2xl font-bold text-white" href="/">
             K12 Tábor
           </Link>
-          <nav className="flex gap-4">
+          <nav className="flex gap-2 md:gap-4">
             <Link
-              className="text-lg text-white hover:underline md:pr-4 pt-2"
+              className="text-md md:text-lg text-white hover:underline md:pr-2 pt-2"
               href="#contact"
             >
               Kontakt
             </Link>
             <Link
-              className="text-lg text-white hover:underline pt-2"
+              className="text-md md:text-lg text-white hover:underline md:pr-1 pt-2"
               href="https://www.k12medlanky.cz/"
             >
               Náš sbor
@@ -61,9 +61,9 @@ export default async function Page() {
               Co vše děláme
             </h2>
             <Cards />
-            <div className="pt-24">
+            <div className="pt-16 sm:pt-24">
               <div className="bg-white rounded-md" id="signUp">
-                <p className="py-1 px-2 text-xl font-semibold dark:text-black">
+                <p className="py-1 px-2 sm:text-xl font-semibold dark:text-black">
                   Neztrácej čas a radši pojď na tábor kde se bude cestovat
                   časem!
                   <br />
@@ -79,7 +79,7 @@ export default async function Page() {
               className="flex flex-col md:flex-row gap-4 max-w-lg mx-auto py-16"
             >
               <input
-                className="flex-1 px-4 py-2 text-lg text-gray-900 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600"
+                className="flex-1 px-4 py-2 sm:text-lg text-gray-900 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600"
                 placeholder="Přihlaš se k novinkám o táboru"
                 name="email"
                 type="email"
