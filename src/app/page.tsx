@@ -69,7 +69,7 @@ export default async function Page() {
                             pro děti od 8 do 14 let
                         </p>
                         <p className="text-md text-white font-medium pt-1">
-                            cena 3000 Kč, při přihlášení do 30. 4. 2600 Kč
+                            2600 Kč při přihlášení do 30. 4. Poté 3000 Kč.
                         </p>
                     </section>
                     <section className="p-8">
@@ -80,12 +80,11 @@ export default async function Page() {
                         <div className="pt-16 sm:pt-24">
                             <div className="bg-white rounded-md" id="signUp">
                                 <p className="py-1 px-2 sm:text-xl font-semibold dark:text-black sm:text-center">
-                                    Neztrácej čas a radši pojď na tábor kde se
-                                    bude cestovat časem!
-                                    <br />
-                                    Scifi, zábava, hry, nová kamarádství a
-                                    interaktivní vzdělání o (nejen) historii
-                                    hrou.
+                                    Neztrácej čas a vydej se s námi na
+                                    nezapomenutelnou pouť časem kde tě čeká
+                                    objevování různých období naší historie,
+                                    hry, scifi, nová kamarádství a interaktivní
+                                    vzdělání o (nejen) dějinách hrou!
                                 </p>
                             </div>
                         </div>
@@ -112,6 +111,7 @@ export default async function Page() {
                         </form>
                     </section>
                 </main>
+                <br />
                 <footer
                     id="contact"
                     className="flex items-center justify-center py-4 text-white text-[10px] md:text-[15px] border-t"
