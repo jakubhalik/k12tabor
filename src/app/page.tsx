@@ -85,7 +85,7 @@ export default async function Page() {
                 type="email"
               />
               <button
-                className="inline-flex items-center justify-center px-6 py-3 text-lg font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700"
+                className="inline-flex items-center justify-center px-6 py-3 text-lg font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 active:bg-sky-400 active:border-sky-900 active:border-[1px]"
                 type="submit"
               >
                 Poslat @adresu
