@@ -8,7 +8,7 @@ export default function Countdown() {
   }
 
   const calculateTimeLeft = () => {
-    const difference = +new Date("2024-02-11") - +new Date();
+    const difference = +new Date("2024-02-12") - +new Date();
     let timeLeft: {
       days: number;
       hours: number;
