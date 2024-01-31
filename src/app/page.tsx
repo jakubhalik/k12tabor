@@ -63,7 +63,7 @@ export default async function Page() {
             <Cards />
             <div className="pt-16 sm:pt-24">
               <div className="bg-white rounded-md" id="signUp">
-                <p className="py-1 px-2 sm:text-xl font-semibold dark:text-black">
+                <p className="py-1 px-2 sm:text-xl font-semibold dark:text-black text-center">
                   Neztrácej čas a radši pojď na tábor kde se bude cestovat
                   časem!
                   <br />
