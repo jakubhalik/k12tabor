@@ -47,11 +47,11 @@ export default async function Page() {
                     </nav>
                 </header>
                 <main className="flex-1 pt-8">
-                    <section className="flex flex-col items-center justify-center text-center p-8 space-y-4">
-                        <h1 className="text-5xl font-bold text-white">
+                    <section className="flex flex-col items-center justify-center text-center p-8">
+                        <h1 className="text-5xl font-bold text-white pt-4 lg:pt-8">
                             Příměstský tábor K12
                         </h1>
-                        <p className="text-xl text-white">
+                        <p className="text-xl text-white py-4">
                             Kytnerova 12a, Brno Medlánky
                         </p>
                         <Link
@@ -61,14 +61,14 @@ export default async function Page() {
                         >
                             Neztrácejte čas!
                         </Link>
-                        <p className="pt-4 text-2xl font-bold text-white">
+                        <p className="pt-6 text-2xl font-bold text-white">
                             8.7. - 12.7. 2024
                         </p>
                         <p className="text-lg text-white">8:30 - 17:00</p>
-                        <p className="text-xl text-white font-semibold">
+                        <p className="text-xl text-white font-semibold pt-4">
                             pro děti od 8 do 14 let
                         </p>
-                        <p className="text-md text-white font-medium">
+                        <p className="text-md text-white font-medium pt-1">
                             cena 3000 Kč, při přihlášení do 30. 4. 2600 Kč
                         </p>
                     </section>
