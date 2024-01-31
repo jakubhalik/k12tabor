@@ -114,7 +114,7 @@ export default async function Page() {
                 </main>
                 <footer
                     id="contact"
-                    className="flex items-center justify-center py-4 text-white text-[10px] md:text-[15px] border-t"
+                    className="flex items-center justify-center pt-8 pb-4 text-white text-[10px] md:text-[15px] border-t"
                 >
                     <span className="pr-4 md:pr-20">
                         © 2024 Příměstský tábor, Kytnerova12, Brno Medlánky
