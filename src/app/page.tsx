@@ -2,26 +2,18 @@ import Link from "next/link";
 import Cards from "../components/Cards";
 import ModeToggle from "../components/ModeToggle";
 import Countdown from "../components/Countdown";
-import fs from "fs";
-import path from "path";
+import { sql } from "@vercel/postgres";
 
 export default async function Page() {
   async function handleEmailSubmission(formData: FormData) {
     "use server";
     console.log("Form submitted");
     try {
-      const filePath = path.join(process.cwd(), "db.txt");
-      let emailList = [];
       const email = formData.get("email");
       console.log("Email: ", email);
       if (typeof email === "string" && email) {
-        if (fs.existsSync(filePath)) {
-          const data = fs.readFileSync(filePath, "utf-8");
-          emailList = JSON.parse(data);
-        }
-        emailList.push(email);
-        fs.writeFileSync(filePath, JSON.stringify(emailList));
-        console.log("Email List Updated: ", emailList);
+        await sql`INSERT INTO email_list (email) VALUES (${email})`;
+        console.log("Email added to the database");
       }
     } catch (error) {
       console.error("Error in handleEmailSubmission: ", error);
