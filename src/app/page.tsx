@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Cards from '../components/Cards';
 import ModeToggle from '../components/ModeToggle';
 import Countdown from '../components/Countdown';
+import SubmitButton from '../components/SubmitButton';
 import { sql } from '@vercel/postgres';
 
 export default async function Page() {
@@ -100,14 +101,7 @@ export default async function Page() {
                                 name="email"
                                 type="email"
                             />
-                            <button
-                                className="inline-flex items-center justify-center px-6 py-3 text-lg font-medium text-white dark:bg-blue-600 rounded-md
-                                    dark:active:border-sky-900 active:border-[1px] bg-gradient-to-l from-orange-400 to-orange-600 hover:from-orange-600 hover:to-orange-400 active:border-white
-                                    dark:from-blue-600 dark:to-blue-600 dark:hover:from-blue-700 dark:hover:to-blue-700"
-                                type="submit"
-                            >
-                                Poslat @adresu
-                            </button>
+                            <SubmitButton />
                         </form>
                     </section>
                 </main>
