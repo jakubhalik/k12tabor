@@ -108,11 +108,9 @@ export default async function Page() {
                 <br />
                 <footer
                     id="contact"
-                    className="flex items-center justify-center py-4 text-white text-[10px] md:text-[15px] border-t"
+                    className="flex items-center justify-center py-8 text-white text-[15px] md:text-[18px] border-t"
                 >
-                    <span className="pr-4">
-                        © 2024 Příměstský tábor, Kytnerova12, Brno Medlánky
-                    </span>
+                    <span className="pr-4">© Kytnerova 12, Brno Medlánky</span>
                     <Link href="https://www.instagram.com/dorostmedlanky/">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
