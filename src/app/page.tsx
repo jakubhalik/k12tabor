@@ -24,22 +24,16 @@ export default async function Page() {
     return (
         <>
             <div className="flex flex-col min-h-screen bg-gradient-to-r from-violet-400 via-blue-500 to-blue-700 dark:from-black dark:to-sky-900">
-                <header className="flex items-center justify-between px-2 sm:px-8 py-4 border-b">
+                <header className="flex items-center justify-between px-6 sm:px-8 py-4 border-b">
                     <Link
                         className="text-md sm:text-2xl font-bold text-white"
                         href="/"
                     >
                         K12 Tábor
                     </Link>
-                    <nav className="flex gap-2 md:gap-4">
+                    <nav className="flex gap-4 md:gap-8 md:pr-2">
                         <Link
                             className="text-md md:text-lg text-white hover:underline md:pr-2 pt-2 font-semibold"
-                            href="#contact"
-                        >
-                            Kontakt
-                        </Link>
-                        <Link
-                            className="text-md md:text-lg text-white hover:underline md:pr-1 pt-2 font-semibold"
                             href="https://www.k12medlanky.cz/"
                         >
                             O nás
