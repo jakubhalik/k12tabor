@@ -1,29 +1,89 @@
 import Link from 'next/link';
 import Cards from '../components/Cards';
 import ModeToggle from '../components/ModeToggle';
-import Countdown from '../components/Countdown';
 import SubmitButton from '../components/SubmitButton';
+import PostForm from '../components/PostForm';
 import { sql } from '@vercel/postgres';
 
 export default async function Page() {
     async function handleEmailSubmission(formData: FormData) {
         'use server';
-        console.log('Form submitted');
+        console.log('Email submitted.');
         try {
             const email = formData.get('email');
             console.log('Email: ', email);
             if (typeof email === 'string' && email) {
+                await sql`
+                    CREATE TABLE IF NOT EXISTS email_list (
+                        id SERIAL PRIMARY KEY,
+                        email VARCHAR(255) NOT NULL
+                    )
+                `;
                 await sql`INSERT INTO email_list (email) VALUES (${email})`;
-                console.log('Email added to the database');
+                console.log('Email added to the database.');
             }
         } catch (error) {
             console.error('Error in handleEmailSubmission: ', error);
         }
     }
 
+    async function handlePostForm(formData: FormData) {
+        'use server';
+        console.log('Form submitted.');
+        try {
+            const kidName = (formData.get('kidName') as string) || '';
+            const kidSurname = (formData.get('kidSurname') as string) || '';
+            const dateOfBirth = (formData.get('dateOfBirth') as string) || '';
+            const tShirtSize = (formData.get('tShirtSize') as string) || '';
+            const streetAndNumber =
+                (formData.get('streetAndNumber') as string) || '';
+            const city = (formData.get('city') as string) || '';
+            const zip = (formData.get('zip') as string) || '';
+            const country = (formData.get('country') as string) || '';
+            const moreInfo = (formData.get('moreInfo') as string) || '';
+            const parentName = (formData.get('parentName') as string) || '';
+            const parentSurname =
+                (formData.get('parentSurname') as string) || '';
+            const phoneNumber = (formData.get('phoneNumber') as string) || '';
+            const email = (formData.get('email') as string) || '';
+            const note = (formData.get('note') as string) || '';
+            await sql`CREATE TABLE IF NOT EXISTS registration_table (
+                id SERIAL PRIMARY KEY, 
+                kid_name VARCHAR(255) NOT NULL, 
+                kid_surname VARCHAR(255) NOT NULL,
+                date_of_birth VARCHAR(255) NOT NULL, 
+                tshirt_size VARCHAR(255) NOT NULL,
+                street_and_number VARCHAR(255) NOT NULL,
+                city VARCHAR(255) NOT NULL,
+                zip VARCHAR(255) NOT NULL,
+                country VARCHAR(255) NOT NULL,
+                more_info VARCHAR(255) NOT NULL,
+                parent_name VARCHAR(255) NOT NULL,
+                parent_surname VARCHAR(255) NOT NULL,
+                phone_number VARCHAR(255) NOT NULL,
+                email VARCHAR(255) NOT NULL,
+                note VARCHAR(255) NOT NULL
+            )`;
+            if (kidName && kidSurname && parentName && parentSurname) {
+                await sql`
+                    INSERT INTO registration_table (kid_name, kid_surname, date_of_birth, tshirt_size, street_and_number, city, zip, country, more_info, parent_name, parent_surname, phone_number, email, note) 
+                    VALUES (${kidName}, ${kidSurname}, ${dateOfBirth}, ${tShirtSize}, ${streetAndNumber}, ${city}, ${zip}, ${country}, ${moreInfo}, ${parentName}, ${parentSurname}, ${phoneNumber}, ${email}, ${note})
+                `;
+                console.log('Submitted form added to the database.');
+            } else {
+                console.error('Error with the form of the data.');
+            }
+        } catch (error) {
+            console.error('Error in handlePostForm: ', error);
+        }
+    }
+
     return (
         <>
-            <div className="flex flex-col min-h-screen bg-gradient-to-r from-violet-400 via-blue-500 to-blue-700 dark:from-black dark:to-sky-900">
+            <div
+                className="flex flex-col min-h-screen bg-gradient-to-r from-violet-400 via-blue-500 to-blue-700 
+                dark:from-black dark:to-sky-900"
+            >
                 <header className="flex items-center justify-between px-6 sm:px-8 py-4 border-b">
                     <Link
                         className="text-md sm:text-2xl font-bold text-white"
@@ -50,8 +110,9 @@ export default async function Page() {
                             Kytnerova 12a, Brno Medlánky
                         </p>
                         <Link
-                            className="inline-flex items-center justify-center px-6 py-3 text-lg font-medium text-white rounded-md bg-gradient-to-r from-orange-400 to-orange-600 
-                                hover:from-orange-600 hover:to-orange-400 active:border-white dark:from-blue-600 dark:to-blue-600 dark:hover:from-blue-700 dark:hover:to-blue-700"
+                            className="inline-flex items-center justify-center px-6 py-3 text-lg font-medium text-white rounded-md 
+                            bg-gradient-to-r from-orange-400 to-orange-600 hover:from-orange-600 hover:to-orange-400 
+                            active:border-white dark:from-blue-600 dark:to-blue-600 dark:hover:from-blue-700 dark:hover:to-blue-700"
                             href="#signUp"
                         >
                             Neztrácejte čas!
@@ -83,14 +144,14 @@ export default async function Page() {
                                 </p>
                             </div>
                         </div>
-                        <br />
-                        <Countdown />
+                        <PostForm action={handlePostForm} />
                         <form
                             action={handleEmailSubmission}
                             className="flex flex-col md:flex-row gap-4 max-w-lg mx-auto py-16"
                         >
                             <input
-                                className="flex-1 px-4 py-2 sm:text-lg text-gray-900 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600"
+                                className="flex-1 px-4 py-2 sm:text-lg text-gray-900 bg-white rounded-md shadow-sm 
+                                focus:outline-none focus:ring-2 focus:ring-blue-600"
                                 placeholder="Přihlaš se k novinkám o táboru"
                                 name="email"
                                 type="email"
