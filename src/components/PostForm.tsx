@@ -16,10 +16,19 @@ import { useState } from 'react';
 export default function PostForm({
     action,
 }: {
-    action: (formData: FormData) => Promise<void>;
+    action: (formData: FormData) => Promise<{ success: boolean } | undefined>;
 }) {
     const [formMode, setFormMode] = useState(false);
     const [dialogOpen, setDialogOpen] = useState(false);
+    const [responseSuccess, setResponseSuccess] = useState(false);
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        console.log(Object.fromEntries(formData.entries()));
+        const response = await action(formData);
+        setDialogOpen(true);
+        response.success && setResponseSuccess(true);
+    };
     const kid = {
         kidName: 'Jméno',
         kidSurname: 'Příjmení',
@@ -51,18 +60,7 @@ export default function PostForm({
                     </button>
                 </div>
             ) : (
-                <form
-                    onSubmit={(e) => {
-                        e.preventDefault();
-                        const formData = new FormData(
-                            e.target as HTMLFormElement
-                        );
-                        console.log(Object.fromEntries(formData.entries()));
-                        action(formData);
-                        setDialogOpen(true);
-                    }}
-                    className="pt-20 pb-[150px]"
-                >
+                <form onSubmit={handleSubmit} className="pt-20 pb-[150px]">
                     <div className="px-4 py-6 md:px-6 lg:py-12">
                         <div className="grid max-w-3xl gap-2 mx-auto">
                             <h1 className="text-3xl font-bold text-white">
@@ -129,10 +127,14 @@ export default function PostForm({
                                 </AlertDialogTrigger>
                                 <AlertDialogContent>
                                     <AlertDialogTitle>
-                                        Přihláška odeslána
+                                        {responseSuccess
+                                            ? 'Přihláška odeslána'
+                                            : 'Vyplňte všechna povinná pole!'}
                                     </AlertDialogTitle>
                                     <AlertDialogDescription>
-                                        Vaše přihláška byla úspěšně odeslána.
+                                        {responseSuccess
+                                            ? 'Vaše přihláška byla úspěšně odeslána.'
+                                            : 'Vyplňte prosím všechna povinná pole.'}
                                     </AlertDialogDescription>
                                     <AlertDialogAction
                                         onClick={() => setDialogOpen(false)}

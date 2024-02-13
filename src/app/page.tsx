@@ -16,7 +16,7 @@ export default async function Page() {
                 await sql`
                     CREATE TABLE IF NOT EXISTS email_list (
                         id SERIAL PRIMARY KEY,
-                        email VARCHAR(255) NOT NULL
+                        email VARCHAR(50) NOT NULL
                     )
                 `;
                 await sql`INSERT INTO email_list (email) VALUES (${email})`;
@@ -49,19 +49,19 @@ export default async function Page() {
             const note = (formData.get('note') as string) || '';
             await sql`CREATE TABLE IF NOT EXISTS registration_table (
                 id SERIAL PRIMARY KEY, 
-                kid_name VARCHAR(255) NOT NULL, 
-                kid_surname VARCHAR(255) NOT NULL,
-                date_of_birth VARCHAR(255) NOT NULL, 
-                tshirt_size VARCHAR(255) NOT NULL,
-                street_and_number VARCHAR(255) NOT NULL,
-                city VARCHAR(255) NOT NULL,
-                zip VARCHAR(255) NOT NULL,
-                country VARCHAR(255) NOT NULL,
+                kid_name VARCHAR(50) NOT NULL, 
+                kid_surname VARCHAR(50) NOT NULL,
+                date_of_birth VARCHAR(50) NOT NULL, 
+                tshirt_size VARCHAR(50) NOT NULL,
+                street_and_number VARCHAR(50) NOT NULL,
+                city VARCHAR(50) NOT NULL,
+                zip VARCHAR(50) NOT NULL,
+                country VARCHAR(50) NOT NULL,
                 more_info VARCHAR(255),
-                parent_name VARCHAR(255) NOT NULL,
-                parent_surname VARCHAR(255) NOT NULL,
-                phone_number VARCHAR(255) NOT NULL,
-                email VARCHAR(255) NOT NULL,
+                parent_name VARCHAR(50) NOT NULL,
+                parent_surname VARCHAR(50) NOT NULL,
+                phone_number VARCHAR(50) NOT NULL,
+                email VARCHAR(50) NOT NULL,
                 note VARCHAR(255)
             )`;
             if (kidName && kidSurname && parentName && parentSurname) {
@@ -70,11 +70,13 @@ export default async function Page() {
                     VALUES (${kidName}, ${kidSurname}, ${dateOfBirth}, ${tShirtSize}, ${streetAndNumber}, ${city}, ${zip}, ${country}, ${moreInfo}, ${parentName}, ${parentSurname}, ${phoneNumber}, ${email}, ${note})
                 `;
                 console.log('Submitted form added to the database.');
+                return { success: true };
             } else {
                 console.error('Error with the form of the data.');
             }
         } catch (error) {
             console.error('Error in handlePostForm: ', error);
+            return { success: false };
         }
     }
 
