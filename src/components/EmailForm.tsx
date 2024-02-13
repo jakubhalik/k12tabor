@@ -30,7 +30,7 @@ export default function EmailForm({
             className="flex flex-col md:flex-row gap-4 max-w-lg mx-auto pt-16"
         >
             <input
-                className="flex-1 px-4 py-2 text:md sm:text-lg text-gray-900 bg-white rounded-md shadow-sm 
+                className="flex-1 px-4 py-[10px] sm:py-2 text:md sm:text-lg text-gray-900 bg-white rounded-md shadow-sm 
                     focus:outline-none focus:ring-2 focus:ring-blue-600"
                 placeholder="Přihlaš se k novinkám o táboru"
                 name="email"
