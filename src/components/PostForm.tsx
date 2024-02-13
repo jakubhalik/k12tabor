@@ -60,7 +60,7 @@ export default function PostForm({
                     </button>
                 </div>
             ) : (
-                <form onSubmit={handleSubmit} className="pt-20 pb-[150px]">
+                <form onSubmit={handleSubmit} className="pt-20 pb-[200px]">
                     <div className="px-4 py-6 md:px-6 lg:py-12">
                         <div className="grid max-w-3xl gap-2 mx-auto">
                             <h1 className="text-3xl font-bold text-white">
@@ -144,7 +144,7 @@ export default function PostForm({
                                 </AlertDialogContent>
                             </AlertDialog>
                             <button
-                                className="inline-flex items-center justify-center px-6 py-[6px] text-lg font-medium text-white rounded-md
+                                className="inline-flex items-center justify-center px-6 py-3 text-xl font-medium text-white rounded-md
                                 bg-gradient-to-r from-orange-400 to-orange-600 hover:from-orange-600 hover:to-orange-400 
                                 active:border-white dark:from-sky-400 dark:to-blue-900 dark:hover:from-blue-900 dark:hover:to-sky-400
                                 dark:active:border dark:focus:border"
