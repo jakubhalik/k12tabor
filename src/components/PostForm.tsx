@@ -3,6 +3,14 @@
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import {
+    AlertDialog,
+    AlertDialogTrigger,
+    AlertDialogContent,
+    AlertDialogTitle,
+    AlertDialogDescription,
+    AlertDialogAction,
+} from '@/components/ui/alert-dialog';
 import { useState } from 'react';
 
 export default function PostForm({
@@ -11,6 +19,7 @@ export default function PostForm({
     action: (formData: FormData) => Promise<void>;
 }) {
     const [formMode, setFormMode] = useState(false);
+    const [dialogOpen, setDialogOpen] = useState(false);
     const kid = {
         kidName: 'Jméno',
         kidSurname: 'Příjmení',
@@ -50,6 +59,7 @@ export default function PostForm({
                         );
                         console.log(Object.fromEntries(formData.entries()));
                         action(formData);
+                        setDialogOpen(true);
                     }}
                     className="pt-20 pb-[150px]"
                 >
@@ -110,8 +120,29 @@ export default function PostForm({
                                 />
                             </div>
                             <br />
+                            <AlertDialog
+                                open={dialogOpen}
+                                onOpenChange={setDialogOpen}
+                            >
+                                <AlertDialogTrigger asChild>
+                                    <button className="hidden">Open</button>
+                                </AlertDialogTrigger>
+                                <AlertDialogContent>
+                                    <AlertDialogTitle>
+                                        Přihláška odeslána
+                                    </AlertDialogTitle>
+                                    <AlertDialogDescription>
+                                        Vaše přihláška byla úspěšně odeslána.
+                                    </AlertDialogDescription>
+                                    <AlertDialogAction
+                                        onClick={() => setDialogOpen(false)}
+                                    >
+                                        OK
+                                    </AlertDialogAction>
+                                </AlertDialogContent>
+                            </AlertDialog>
+
                             <button
-                                onClick={() => alert('Přihláška odeslána.')}
                                 className="inline-flex items-center justify-center px-6 py-[6px] text-lg font-medium text-white rounded-md
                                 bg-gradient-to-r from-orange-400 to-orange-600 hover:from-orange-600 hover:to-orange-400 
                                 active:border-white dark:from-sky-400 dark:to-blue-900 dark:hover:from-blue-900 dark:hover:to-sky-400

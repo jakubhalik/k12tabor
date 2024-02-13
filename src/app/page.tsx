@@ -57,12 +57,12 @@ export default async function Page() {
                 city VARCHAR(255) NOT NULL,
                 zip VARCHAR(255) NOT NULL,
                 country VARCHAR(255) NOT NULL,
-                more_info VARCHAR(255) NOT NULL,
+                more_info VARCHAR(255),
                 parent_name VARCHAR(255) NOT NULL,
                 parent_surname VARCHAR(255) NOT NULL,
                 phone_number VARCHAR(255) NOT NULL,
                 email VARCHAR(255) NOT NULL,
-                note VARCHAR(255) NOT NULL
+                note VARCHAR(255)
             )`;
             if (kidName && kidSurname && parentName && parentSurname) {
                 await sql`
