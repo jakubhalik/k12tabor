@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Cards from '../components/Cards';
 import ModeToggle from '../components/ModeToggle';
-import SubmitButton from '../components/SubmitButton';
+import EmailForm from '../components/EmailForm';
 import PostForm from '../components/PostForm';
 import { sql } from '@vercel/postgres';
 
@@ -21,9 +21,11 @@ export default async function Page() {
                 `;
                 await sql`INSERT INTO email_list (email) VALUES (${email})`;
                 console.log('Email added to the database.');
+                return { success: true };
             }
         } catch (error) {
             console.error('Error in handleEmailSubmission: ', error);
+            return { success: false };
         }
     }
 
@@ -64,7 +66,20 @@ export default async function Page() {
                 email VARCHAR(50) NOT NULL,
                 note VARCHAR(255)
             )`;
-            if (kidName && kidSurname && parentName && parentSurname) {
+            if (
+                kidName &&
+                kidSurname &&
+                dateOfBirth &&
+                tShirtSize &&
+                streetAndNumber &&
+                city &&
+                zip &&
+                country &&
+                parentName &&
+                parentSurname &&
+                phoneNumber &&
+                email
+            ) {
                 await sql`
                     INSERT INTO registration_table (kid_name, kid_surname, date_of_birth, tshirt_size, street_and_number, city, zip, country, more_info, parent_name, parent_surname, phone_number, email, note) 
                     VALUES (${kidName}, ${kidSurname}, ${dateOfBirth}, ${tShirtSize}, ${streetAndNumber}, ${city}, ${zip}, ${country}, ${moreInfo}, ${parentName}, ${parentSurname}, ${phoneNumber}, ${email}, ${note})
@@ -147,19 +162,7 @@ export default async function Page() {
                             </div>
                         </div>
                         <PostForm action={handlePostForm} />
-                        <form
-                            action={handleEmailSubmission}
-                            className="flex flex-col md:flex-row gap-4 max-w-lg mx-auto py-16"
-                        >
-                            <input
-                                className="flex-1 px-4 py-2 sm:text-lg text-gray-900 bg-white rounded-md shadow-sm 
-                                focus:outline-none focus:ring-2 focus:ring-blue-600"
-                                placeholder="Přihlaš se k novinkám o táboru"
-                                name="email"
-                                type="email"
-                            />
-                            <SubmitButton />
-                        </form>
+                        <EmailForm action={handleEmailSubmission} />
                     </section>
                 </main>
                 <br />

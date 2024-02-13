@@ -11,7 +11,7 @@ import {
     AlertDialogDescription,
     AlertDialogAction,
 } from '@/components/ui/alert-dialog';
-import { useState } from 'react';
+import { useState, FormEvent } from 'react';
 
 export default function PostForm({
     action,
@@ -21,13 +21,13 @@ export default function PostForm({
     const [formMode, setFormMode] = useState(false);
     const [dialogOpen, setDialogOpen] = useState(false);
     const [responseSuccess, setResponseSuccess] = useState(false);
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const formData = new FormData(e.target);
+        const formData = new FormData(e.currentTarget);
         console.log(Object.fromEntries(formData.entries()));
         const response = await action(formData);
         setDialogOpen(true);
-        response.success && setResponseSuccess(true);
+        response?.success && setResponseSuccess(true);
     };
     const kid = {
         kidName: 'Jméno',
@@ -143,7 +143,6 @@ export default function PostForm({
                                     </AlertDialogAction>
                                 </AlertDialogContent>
                             </AlertDialog>
-
                             <button
                                 className="inline-flex items-center justify-center px-6 py-[6px] text-lg font-medium text-white rounded-md
                                 bg-gradient-to-r from-orange-400 to-orange-600 hover:from-orange-600 hover:to-orange-400 
