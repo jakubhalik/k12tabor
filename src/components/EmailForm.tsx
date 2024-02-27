@@ -7,7 +7,8 @@ import {
     AlertDialogTitle,
     AlertDialogAction,
 } from '@/components/ui/alert-dialog';
-import { useState, FormEvent } from 'react';
+import { useState, FormEvent, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 
 export default function EmailForm({
     action,
@@ -15,7 +16,11 @@ export default function EmailForm({
     action: (formData: FormData) => Promise<{ success: boolean } | undefined>;
 }) {
     const [dialogOpen, setDialogOpen] = useState(false);
+
     const [responseSuccess, setResponseSuccess] = useState(false);
+
+    const form = useRef<HTMLFormElement>(null);
+
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
@@ -23,9 +28,21 @@ export default function EmailForm({
         const response = await action(formData);
         setDialogOpen(true);
         response?.success && setResponseSuccess(true);
+        form?.current &&
+            process?.env &&
+            process.env.NEXT_PUBLIC_EMAILJS_ID &&
+            process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE &&
+            process.env.NEXT_PUBLIC_EMAILJS_KEY &&
+            emailjs.sendForm(
+                process.env.NEXT_PUBLIC_EMAILJS_ID,
+                process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE,
+                form.current,
+                process.env.NEXT_PUBLIC_EMAILJS_KEY
+            );
     };
     return (
         <form
+            ref={form}
             onSubmit={handleSubmit}
             className="flex flex-col md:flex-row gap-4 max-w-lg mx-auto pt-16"
         >

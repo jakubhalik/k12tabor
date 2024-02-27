@@ -11,7 +11,8 @@ import {
     AlertDialogDescription,
     AlertDialogAction,
 } from '@/components/ui/alert-dialog';
-import { useState, FormEvent } from 'react';
+import { useState, FormEvent, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 
 export default function PostForm({
     action,
@@ -19,8 +20,13 @@ export default function PostForm({
     action: (formData: FormData) => Promise<{ success: boolean } | undefined>;
 }) {
     const [formMode, setFormMode] = useState(false);
+
     const [dialogOpen, setDialogOpen] = useState(false);
+
     const [responseSuccess, setResponseSuccess] = useState(false);
+
+    const form = useRef<HTMLFormElement>(null);
+
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
@@ -28,7 +34,19 @@ export default function PostForm({
         const response = await action(formData);
         setDialogOpen(true);
         response?.success && setResponseSuccess(true);
+        form?.current &&
+            process?.env &&
+            process.env.NEXT_PUBLIC_EMAILJS_ID &&
+            process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_REGISTRATION &&
+            process.env.NEXT_PUBLIC_EMAILJS_KEY &&
+            emailjs.sendForm(
+                process.env.NEXT_PUBLIC_EMAILJS_ID,
+                process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_REGISTRATION,
+                form.current,
+                process.env.NEXT_PUBLIC_EMAILJS_KEY
+            );
     };
+
     const kid = {
         kidName: 'Jméno',
         kidSurname: 'Příjmení',
@@ -39,12 +57,14 @@ export default function PostForm({
         zip: 'PSČ',
         country: 'Země',
     };
+
     const parent = {
         parentName: 'Jméno',
         parentSurname: 'Příjmení',
         phoneNumber: 'Telefonní číslo',
         email: 'Email',
     };
+
     return (
         <>
             {!formMode ? (
@@ -60,7 +80,11 @@ export default function PostForm({
                     </button>
                 </div>
             ) : (
-                <form onSubmit={handleSubmit} className="pt-20 pb-[200px]">
+                <form
+                    ref={form}
+                    onSubmit={handleSubmit}
+                    className="pt-20 pb-[200px]"
+                >
                     <div className="px-4 py-6 md:px-6 lg:py-12">
                         <div className="grid max-w-3xl gap-2 mx-auto">
                             <h1 className="text-3xl font-bold text-white">
