@@ -28,17 +28,12 @@ export default function EmailForm({
         const response = await action(formData);
         setDialogOpen(true);
         response?.success && setResponseSuccess(true);
-        form?.current &&
-            process?.env &&
-            process.env.NEXT_PUBLIC_EMAILJS_ID &&
-            process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE &&
-            process.env.NEXT_PUBLIC_EMAILJS_KEY &&
-            emailjs.sendForm(
-                process.env.NEXT_PUBLIC_EMAILJS_ID,
-                process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE,
-                form.current,
-                process.env.NEXT_PUBLIC_EMAILJS_KEY
-            );
+        emailjs.sendForm(
+            process?.env?.NEXT_PUBLIC_EMAILJS_ID ?? '',
+            process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE ?? '',
+            form?.current ?? '',
+            process.env.NEXT_PUBLIC_EMAILJS_KEY ?? ''
+        );
     };
     return (
         <form

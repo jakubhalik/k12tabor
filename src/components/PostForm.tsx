@@ -34,17 +34,12 @@ export default function PostForm({
         const response = await action(formData);
         setDialogOpen(true);
         response?.success && setResponseSuccess(true);
-        form?.current &&
-            process?.env &&
-            process.env.NEXT_PUBLIC_EMAILJS_ID &&
-            process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_REGISTRATION &&
-            process.env.NEXT_PUBLIC_EMAILJS_KEY &&
-            emailjs.sendForm(
-                process.env.NEXT_PUBLIC_EMAILJS_ID,
-                process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_REGISTRATION,
-                form.current,
-                process.env.NEXT_PUBLIC_EMAILJS_KEY
-            );
+        emailjs.sendForm(
+            process.env.NEXT_PUBLIC_EMAILJS_ID ?? '',
+            process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_REGISTRATION ?? '',
+            form.current ?? '',
+            process.env.NEXT_PUBLIC_EMAILJS_KEY ?? ''
+        );
     };
 
     const kid = {
