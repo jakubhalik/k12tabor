@@ -1,6 +1,6 @@
 #!/bin/bash
 
-labels="Jméno dítěte,Příjmení dítěte,Datum narození dítěte,Velikost trika dítěte,Ulice a číslo,Město,PSČ,Země,Další informace,Jméno zákonného zástupce,Příjmení zákonného zástupce,Telefonní číslo zákonného zástupce,Email zákonného zástupce,Dotazy/další informace"
+labels="id, Jméno dítěte,Příjmení dítěte,Datum narození dítěte,Velikost trika dítěte,Ulice a číslo,Město,PSČ,Země,Další informace,Jméno zákonného zástupce,Příjmení zákonného zástupce,Telefonní číslo zákonného zástupce,Email zákonného zástupce,Dotazy/další informace"
 
 read -p "Enter postgres connection info: " postgresDbInfo
 
@@ -22,8 +22,8 @@ if [ $? -eq 0 ]; then
 			num_fields = split($0, fields, "|");
 			print "Number of labels: " num_labels;
 			print "Number of fields: " num_fields;
-			if(num_fields == num_labels + 1) {
-				for(i=2; i<=num_fields; i++) {
+			if(num_fields == num_labels) {
+				for(i=1; i<=num_fields; i++) {
 					gsub(/^[ \t]+|[ \t]+$/, "", fields[i]);
 					printf "%s: %s<br />\n", label_array[i], fields[i];
 				}
