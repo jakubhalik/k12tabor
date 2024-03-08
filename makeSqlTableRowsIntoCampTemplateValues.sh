@@ -1,6 +1,6 @@
 #!/bin/bash
 
-labels="id, Jméno dítěte,Příjmení dítěte,Datum narození dítěte,Velikost trika dítěte,Ulice a číslo,Město,PSČ,Země,Další informace,Jméno zákonného zástupce,Příjmení zákonného zástupce,Telefonní číslo zákonného zástupce,Email zákonného zástupce,Dotazy/další informace"
+labels="id,Jméno dítěte,Příjmení dítěte,Datum narození dítěte,Velikost trika dítěte,Ulice a číslo,Město,PSČ,Země,Další informace,Jméno zákonného zástupce,Příjmení zákonného zástupce,Telefonní číslo zákonného zástupce,Email zákonného zástupce,Dotazy/další informace"
 
 read -p "Enter postgres connection info: " postgresDbInfo
 
