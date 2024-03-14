@@ -4,6 +4,7 @@ import ModeToggle from '../components/ModeToggle';
 import EmailForm from '../components/EmailForm';
 import PostForm from '../components/PostForm';
 import { sql } from '@vercel/postgres';
+import { pool } from '../../postgresConfig';
 
 export default async function Page() {
     async function handleEmailSubmission(formData: FormData) {
@@ -31,67 +32,54 @@ export default async function Page() {
 
     async function handlePostForm(formData: FormData) {
         'use server';
-        console.log('Form submitted.');
+        console.log(
+            'Form submitted to the server, now is gonna be being handled.'
+        );
+        const client = await pool.connect();
         try {
-            const kidName = (formData.get('kidName') as string) || '';
-            const kidSurname = (formData.get('kidSurname') as string) || '';
-            const dateOfBirth = (formData.get('dateOfBirth') as string) || '';
-            const tShirtSize = (formData.get('tShirtSize') as string) || '';
-            const streetAndNumber =
-                (formData.get('streetAndNumber') as string) || '';
-            const city = (formData.get('city') as string) || '';
-            const zip = (formData.get('zip') as string) || '';
-            const country = (formData.get('country') as string) || '';
-            const moreInfo = (formData.get('moreInfo') as string) || '';
-            const parentName = (formData.get('parentName') as string) || '';
-            const parentSurname =
-                (formData.get('parentSurname') as string) || '';
-            const phoneNumber = (formData.get('phoneNumber') as string) || '';
-            const email = (formData.get('email') as string) || '';
-            const note = (formData.get('note') as string) || '';
-            await sql`CREATE TABLE IF NOT EXISTS registration_table (
-                id SERIAL PRIMARY KEY, 
-                kid_name VARCHAR(50) NOT NULL, 
-                kid_surname VARCHAR(50) NOT NULL,
-                date_of_birth VARCHAR(50) NOT NULL, 
-                tshirt_size VARCHAR(50) NOT NULL,
-                street_and_number VARCHAR(50) NOT NULL,
-                city VARCHAR(50) NOT NULL,
-                zip VARCHAR(50) NOT NULL,
-                country VARCHAR(50) NOT NULL,
-                more_info VARCHAR(255),
-                parent_name VARCHAR(50) NOT NULL,
-                parent_surname VARCHAR(50) NOT NULL,
-                phone_number VARCHAR(50) NOT NULL,
-                email VARCHAR(50) NOT NULL,
-                note VARCHAR(255)
-            )`;
-            if (
-                kidName &&
-                kidSurname &&
-                dateOfBirth &&
-                tShirtSize &&
-                streetAndNumber &&
-                city &&
-                zip &&
-                country &&
-                parentName &&
-                parentSurname &&
-                phoneNumber &&
-                email
-            ) {
-                await sql`
-                    INSERT INTO registration_table (kid_name, kid_surname, date_of_birth, tshirt_size, street_and_number, city, zip, country, more_info, parent_name, parent_surname, phone_number, email, note) 
-                    VALUES (${kidName}, ${kidSurname}, ${dateOfBirth}, ${tShirtSize}, ${streetAndNumber}, ${city}, ${zip}, ${country}, ${moreInfo}, ${parentName}, ${parentSurname}, ${phoneNumber}, ${email}, ${note})
-                `;
-                console.log('Submitted form added to the database.');
-                return { success: true };
-            } else {
-                console.error('Error with the form of the data.');
+            const fields = Object.keys(formData);
+            if (fields.length === 0) {
+                console.error('Error: No data provided');
+                return { success: false, error: 'No data provided' };
             }
+            const values = Object.values(formData);
+            const createTableQuery = `
+                CREATE TABLE IF NOT EXISTS registration_table (
+                    id SERIAL PRIMARY KEY,
+                    ${fields
+                    .map(
+                        (field) =>
+                            `"${field}" VARCHAR(50) ${field === 'moreInfo' || field === 'note' ? '' : 'NOT NULL'}`
+                    )
+                    .join(', ')}
+                )
+            `;
+            console.log('Final CREATE TABLE query:', createTableQuery);
+            const createTableResult = await client.query(createTableQuery);
+            console.log(
+                'the result of creating table if does not exist: ',
+                createTableResult
+            );
+
+            if (fields.length === 0) {
+                console.error('Error: No data provided');
+                return { success: false, error: 'No data provided' };
+            }
+
+            const query = `
+                INSERT INTO registration_table (${fields.join(', ')}) 
+                VALUES (${values.map((_, index) => `$${index + 1}`).join(', ')})
+            `;
+
+            const result = await client.query(query);
+            console.log('Submitted form added to the database: ', result);
+            return { success: true };
         } catch (error) {
             console.error('Error in handlePostForm: ', error);
+
             return { success: false };
+        } finally {
+            client.release();
         }
     }
 
