@@ -145,7 +145,7 @@ export default async function Page() {
                             2600 Kč při přihlášení do 30. 4. Poté 3000 Kč.
                         </p>
                         <br />
-                        <p className="text-left text-sm sm:text-center sm:text-md text-white px-2 pt-4">
+                        <p className="text-left text-sm sm:text-center sm:text-base text-white pl-4 pr-2 sm:px-0 pt-4">
                             Přemýšleli jste už někdy, jaké by to bylo cestovat
                             časem? Zajímá Vás, jaké by to bylo setkat se s
                             Leonardem da Vinci nebo vidět Michelangela
@@ -153,7 +153,7 @@ export default async function Page() {
                             Latinská studia a potřebujete zdroje pro svoji
                             závěrečnou práci?
                         </p>
-                        <p className="text-left text-sm sm:text-center sm:text-md text-white px-2 pt-8">
+                        <p className="text-left text-sm sm:text-center sm:text-base text-white pl-4 pr-2 sm:px-0 pt-8">
                             Pokud je alespoň jedna Vaše odpověď ano, naše
                             cestovní kancelář Kairos má pro Vás přesně to, co
                             hledáte. Zájezd napříč historií Říma. Od 20.
