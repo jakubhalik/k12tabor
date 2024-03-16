@@ -102,15 +102,12 @@ export default async function Page() {
                 dark:from-black dark:to-sky-900"
             >
                 <header className="flex items-center justify-between px-6 sm:px-8 py-4 border-b">
-                    <Link
-                        className="text-md sm:text-2xl font-bold text-white"
-                        href="/"
-                    >
+                    <Link className="sm:text-2xl font-bold text-white" href="/">
                         K12 Tábor
                     </Link>
                     <nav className="flex gap-4 md:gap-8 md:pr-2">
                         <Link
-                            className="text-md md:text-lg text-white hover:underline md:pr-2 pt-2 font-semibold"
+                            className="md:text-lg text-white hover:underline md:pr-2 pt-2 font-semibold"
                             href="https://www.k12medlanky.cz/"
                         >
                             O nás
@@ -118,14 +115,11 @@ export default async function Page() {
                         <ModeToggle />
                     </nav>
                 </header>
-                <main className="flex-1 pt-8">
+                <main className="flex-1 pt-10">
                     <section className="flex flex-col items-center justify-center text-center p-8">
-                        <h1 className="text-5xl font-bold text-white pt-4 lg:pt-8">
+                        <h1 className="text-5xl font-bold text-white pt-8 pb-4 lg:pb-6">
                             Příměstský tábor K12
                         </h1>
-                        <p className="text-xl text-white py-4">
-                            Kytnerova 12a, Brno Medlánky
-                        </p>
                         <Link
                             className="inline-flex items-center justify-center px-6 py-3 text-lg font-medium text-white rounded-md 
                             bg-gradient-to-r from-orange-400 to-orange-600 hover:from-orange-600 hover:to-orange-400 
@@ -134,41 +128,69 @@ export default async function Page() {
                         >
                             Neztrácejte čas!
                         </Link>
-                        <p className="pt-6 text-2xl font-bold text-white">
+                        <p className="text-lg pt-1 font-bold">
+                            aneb dějepis trochu jinak
+                        </p>
+                        <p className="pt-6">
+                            Pro všechny, kteří mají rádi příběhy,{' '}
+                            <span className="font-bold">dobrodružství </span>a
+                            spoustu <span className="font-bold">zábavy</span>, a
+                            také hledají nové{' '}
+                            <span className="font-bold">kamarády </span> a
+                            nechtějí jen sedět u mobilu a počítače: Je Vám cca 8
+                            – 14 let?
+                        </p>
+                        <p className="text-sm text-center sm:text-base text-white pl-4 pr-2 sm:px-0 pt-2">
+                            Pokud je alespoň jedna Vaše odpověď ano, naše
+                            cestovní kancelář KAIROS má pro Vás přesně to, co
+                            hledáte.{' '}
+                            <span className="font-bold">
+                                Pět dní a každý v jiné historické éře.{' '}
+                            </span>
+                            Zážitek, na který do konce života nezapomenete.
+                            Zájezd napříč historií Říma. Od 20. století, přes
+                            renesanci až po antiku a to vše během jednoho{' '}
+                            <span className="font-bold">týdne</span>.
+                        </p>
+                        <p className="pt-28 lg:pt-6 text-5xl font-bold text-white">
                             8.7. - 12.7. 2024
                         </p>
                         <p className="text-lg text-white">8:30 - 17:00</p>
-                        <p className="text-xl text-white font-semibold pt-4">
-                            pro děti od 8 do 14 let
-                        </p>
-                        <p className="text-md text-white font-medium pt-1">
-                            2600 Kč při přihlášení do 30. 4. Poté 3000 Kč.
-                        </p>
-                        <br />
-                        <p className="text-left text-sm sm:text-center sm:text-base text-white pl-4 pr-2 sm:px-0 pt-4">
-                            Přemýšleli jste už někdy, jaké by to bylo cestovat
-                            časem? Zajímá Vás, jaké by to bylo setkat se s
-                            Leonardem da Vinci nebo vidět Michelangela
-                            Buonarroti při malbě Sixtinské Kaple? Studujete
-                            Latinská studia a potřebujete zdroje pro svoji
-                            závěrečnou práci?
-                        </p>
-                        <p className="text-left text-sm sm:text-center sm:text-base text-white pl-4 pr-2 sm:px-0 pt-8">
-                            Pokud je alespoň jedna Vaše odpověď ano, naše
-                            cestovní kancelář Kairos má pro Vás přesně to, co
-                            hledáte. Zájezd napříč historií Říma. Od 20.
-                            století, přes renesanci až po antiku a to vše během
-                            jednoho týdne. Zážitková cesta napříč časem. Pět dní
-                            a každý v jiné historické éře. Zážitek, na který do
-                            konce života nezapomenete. Cestovní kancelář Kairos
-                            založená roku 2345 nyní nabízí své služby i v roce
-                            2024. Neztrácejte tedy čas a{' '}
+                        <p className=" text-sm text-center sm:text-base text-white">
+                            Přemýšleli jste už někdy, jaké by to bylo{' '}
+                            <span className="text-lg font-bold">
+                                cestovat časem?
+                            </span>{' '}
+                            Zajímá Vás, jaké by to bylo setkat se s Leonardem da
+                            Vinci nebo vidět Michelangela Buonarroti při malbě
+                            Sixtinské Kaple? Studujete Latinská studia a
+                            potřebujete zdroje pro svoji závěrečnou práci?
+                            Neztrácejte tedy čas a{' '}
                             <a href="#signUp" className="underline">
                                 přihlašte se
                             </a>{' '}
                             už teď!
                         </p>
+                        <br />
+                        <p className="text-4xl text-white font-semibold">
+                            pro děti od 8 do 14 let
+                        </p>
+                        <p className="text-lg">
+                            Místo konání:{' '}
+                            <span className="font-bold">
+                                Kytnerova 12a, a venkovní hřiště v Medlánkách
+                            </span>
+                        </p>
+                        <p className="text-white font-medium pt-1">
+                            <span className="font-bold">
+                                2600 Kč při přihlášení do 30. 4
+                            </span>
+                            . Poté 3000 Kč.
+                        </p>
                     </section>
+                    <br />
+                    <br />
+                    <br />
                     <section className="p-8">
                         <h2 className="text-3xl font-bold text-white mb-4">
                             Co vše děláme
