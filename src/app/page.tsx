@@ -98,7 +98,7 @@ export default async function Page() {
     return (
         <>
             <div
-                className="flex flex-col min-h-screen bg-gradient-to-r from-violet-400 via-blue-500 to-blue-700 
+                className="flex flex-col min-h-screen bg-gradient-to-r from-violet-600 via-blue-700 to-blue-900 
                 dark:from-black dark:to-sky-900"
             >
                 <header className="flex items-center justify-between px-6 sm:px-8 py-4 border-b">
