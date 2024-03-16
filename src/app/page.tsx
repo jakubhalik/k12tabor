@@ -128,10 +128,10 @@ export default async function Page() {
                         >
                             Neztrácejte čas!
                         </Link>
-                        <p className="text-lg pt-1 font-bold">
+                        <p className="text-lg pt-1 font-bold text-white">
                             aneb dějepis trochu jinak
                         </p>
-                        <p className="pt-6 px-4 text-justify">
+                        <p className="pt-6 px-4 text-justify text-white">
                             Pro všechny, kteří mají rádi příběhy,{' '}
                             <span className="font-bold">dobrodružství </span>a
                             spoustu <span className="font-bold">zábavy</span>, a
@@ -175,7 +175,7 @@ export default async function Page() {
                         <p className="text-4xl text-white font-semibold">
                             pro děti od 8 do 14 let
                         </p>
-                        <p className="text-lg">
+                        <p className="text-lg text-white">
                             Místo konání:{' '}
                             <span className="font-bold">
                                 Kytnerova 12a, a venkovní hřiště v Medlánkách
