@@ -156,7 +156,7 @@ export default async function Page() {
                             8.7. - 12.7. 2024
                         </p>
                         <p className="text-lg text-white">8:30 - 17:00</p>
-                        <p className=" text-sm text-center sm:text-base text-white">
+                        <p className="pt-6 text-sm text-center sm:text-base text-white">
                             Přemýšleli jste už někdy, jaké by to bylo{' '}
                             <span className="text-lg font-bold">
                                 cestovat časem?
