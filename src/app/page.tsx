@@ -131,16 +131,16 @@ export default async function Page() {
                         <p className="text-lg pt-1 font-bold">
                             aneb dějepis trochu jinak
                         </p>
-                        <p className="pt-6">
+                        <p className="pt-6 px-4 text-justify">
                             Pro všechny, kteří mají rádi příběhy,{' '}
                             <span className="font-bold">dobrodružství </span>a
                             spoustu <span className="font-bold">zábavy</span>, a
                             také hledají nové{' '}
                             <span className="font-bold">kamarády </span> a
-                            nechtějí jen sedět u mobilu a počítače: Je Vám cca 8
+                            nechtějí jen sedět u mobilu a počítače: Je ti cca 8
                             – 14 let?
                         </p>
-                        <p className="text-sm text-center sm:text-base text-white pl-4 pr-2 sm:px-0 pt-2">
+                        <p className="text-sm text-justify sm:text-base text-white px-8 sm:px-0 pt-2">
                             Pokud je alespoň jedna Vaše odpověď ano, naše
                             cestovní kancelář KAIROS má pro Vás přesně to, co
                             hledáte.{' '}
@@ -152,7 +152,7 @@ export default async function Page() {
                             renesanci až po antiku a to vše během jednoho{' '}
                             <span className="font-bold">týdne</span>.
                         </p>
-                        <p className="pt-28 lg:pt-6 text-5xl font-bold text-white">
+                        <p className="pt-12 lg:pt-6 text-5xl font-bold text-white">
                             8.7. - 12.7. 2024
                         </p>
                         <p className="text-lg text-white">8:30 - 17:00</p>
