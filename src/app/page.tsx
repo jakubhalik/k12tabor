@@ -192,7 +192,7 @@ export default async function Page() {
                             className="pt-10 px-10"
                             poster="poster.JPG"
                         >
-                            <source src="tabor.mov" type="video/mp4" />
+                            <source src="tabor.webm" type="video/mp4" />
                         </video>
                     </section>
                     <section className="px-8">
