@@ -187,11 +187,15 @@ export default async function Page() {
                             </span>
                             . Poté 3000 Kč.
                         </p>
+                        <video
+                            controls
+                            className="pt-10 px-10"
+                            poster="poster.JPG"
+                        >
+                            <source src="tabor.mov" type="video/mp4" />
+                        </video>
                     </section>
-                    <br />
-                    <br />
-                    <br />
-                    <section className="p-8">
+                    <section className="px-8">
                         <h2 className="text-3xl font-bold text-white mb-4">
                             Co vše děláme
                         </h2>
