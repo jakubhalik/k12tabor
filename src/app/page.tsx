@@ -4,6 +4,7 @@ import ModeToggle from '../components/ModeToggle';
 import EmailForm from '../components/EmailForm';
 import PostForm from '../components/PostForm';
 import { sql } from '@vercel/postgres';
+import Video from '@/components/Video';
 
 export default async function Page() {
     async function handleEmailSubmission(formData: FormData) {
@@ -187,13 +188,7 @@ export default async function Page() {
                             </span>
                             . Poté 3000 Kč.
                         </p>
-                        <video
-                            controls
-                            className="pt-10 px-10"
-                            poster="poster.JPG"
-                        >
-                            <source src="tabor.webm" type="video/mp4" />
-                        </video>
+                        <Video />
                     </section>
                     <section className="px-8">
                         <h2 className="text-3xl font-bold text-white mb-4">
