@@ -5,7 +5,7 @@ export default function Video() {
         <video
             controls
             className="pt-10 px-5 xl:px-[400px]"
-            poster="poster.JPG"
+            poster="poster1.JPG"
         >
             <source src="tabor5.webm" type="video/mp4" />
         </video>

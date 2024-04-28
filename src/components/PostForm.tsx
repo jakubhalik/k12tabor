@@ -63,7 +63,7 @@ export default function PostForm({
     return (
         <>
             {!formMode ? (
-                <div className="flex justify-center pt-32 pb-[150px]">
+                <div className="flex justify-center pt-10">
                     <button
                         onClick={() => setFormMode(true)}
                         className="px-6 py-3 text-3xl font-medium text-white rounded-md 
@@ -75,12 +75,8 @@ export default function PostForm({
                     </button>
                 </div>
             ) : (
-                <form
-                    ref={form}
-                    onSubmit={handleSubmit}
-                    className="pt-20 pb-[200px]"
-                >
-                    <div className="px-4 py-6 md:px-6 lg:py-12">
+                <form ref={form} onSubmit={handleSubmit} className="pt-20">
+                    <div className="px-4">
                         <div className="grid max-w-3xl gap-2 mx-auto">
                             <h1 className="text-3xl font-bold text-white">
                                 Údaje o dítěti

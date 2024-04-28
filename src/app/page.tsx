@@ -130,7 +130,7 @@ export default async function Page() {
                             Neztrácejte čas!
                         </Link>
                         <p className="text-lg pt-1 font-bold text-white">
-                            aneb dějepis trochu jinak
+                            Na téma cestování časem, aneb dějepis trochu jinak
                         </p>
                         <p className="pt-6 px-4 text-justify text-white">
                             Pro všechny, kteří mají rádi příběhy,{' '}
@@ -184,18 +184,17 @@ export default async function Page() {
                         </p>
                         <p className="text-white font-medium pt-1">
                             <span className="font-bold">
-                                2600 Kč při přihlášení do 30. 4
+                                2600 Kč při přihlášení do 31. 5
                             </span>
                             . Poté 3000 Kč.
                         </p>
-                        <Video />
                     </section>
                     <section className="px-8">
                         <h2 className="text-3xl font-bold text-white mb-4">
                             Co vše děláme
                         </h2>
                         <Cards />
-                        <div className="pt-16 sm:pt-24">
+                        <div className="pt-8">
                             <div className="bg-white rounded-md" id="signUp">
                                 <p className="py-1 px-2 sm:text-xl font-semibold dark:text-black sm:text-center">
                                     Neztrácej čas a vydej se s námi na
@@ -207,7 +206,9 @@ export default async function Page() {
                             </div>
                         </div>
                         <PostForm action={handlePostForm} />
+                        <Video />
                         <EmailForm action={handleEmailSubmission} />
+                        <br />
                     </section>
                 </main>
                 <br />
