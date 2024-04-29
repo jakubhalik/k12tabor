@@ -173,6 +173,7 @@ export default async function Page() {
                             už teď!
                         </p>
                         <br />
+                        <br />
                         <p className="text-4xl text-white font-semibold">
                             pro děti od 8 do 14 let
                         </p>
