@@ -127,10 +127,10 @@ export default async function Page() {
                             active:border-white dark:from-blue-600 dark:to-blue-600 dark:hover:from-blue-700 dark:hover:to-blue-700"
                             href="#signUp"
                         >
-                            Neztrácejte čas!
+                            Hra o cestování časem
                         </Link>
                         <p className="text-lg pt-1 font-bold text-white">
-                            Na téma cestování časem, aneb dějepis trochu jinak
+                            aneb dějepis trochu jinak
                         </p>
                         <p className="pt-6 px-4 text-justify text-white">
                             Pro všechny, kteří mají rádi příběhy,{' '}
