@@ -197,15 +197,11 @@ export default async function Page() {
                         <div className="pt-8">
                             <div className="bg-white rounded-md" id="signUp">
                                 <p className="py-1 px-2 sm:text-xl font-semibold dark:text-black sm:text-center">
-                                    Neztrácej čas a vydej se s námi na
-                                    nezapomenutelnou pouť časem! Čeká tě
-                                    objevování různých období naší historie,
-                                    napínavý příběh, nová kamarádství a spousta
-                                    zábavy.{' '}
+                                    Registrace naplněna. <br />
+                                    Těšímě se na vás příští rok!
                                 </p>
                             </div>
                         </div>
-                        <PostForm action={handlePostForm} />
                         <Video />
                         <EmailForm action={handleEmailSubmission} />
                         <br />
